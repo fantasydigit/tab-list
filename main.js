@@ -23220,13 +23220,7 @@ function SampleTabContent(text) {
     return React.createElement(
         "div",
         { className: "margin" },
-        text,
-        
-        React.createElement(
-          "h1",
-          null,
-          "Man Illustration"
-      )  
+        text  
     );
 }
 
