@@ -2,10 +2,55 @@
 const { TabList } = require("@adobe/xd-plugin-toolkit-react");
 const React = require("react");
 const ReactDOM = require("react-dom");
+const style = require("./styles.css");
 
-function SampleTabContent(text) {
-    return <div className="margin">{ text }</div>
+function clickMe(e){
+    console.log(e.currentTarget.getAttribute('data-illustration-path'));
+
 }
+function SampleTabContent(text) {
+    
+    return <div className="category-view">
+        <ul className="flex-container wrap">
+            <li className="flex-image-item" id="image-item1" data-illustration-path="../images/humaaans-sitting-3.png"  onClick={(e) => {clickMe(e)}}>
+                <a target="_blank" href="img_5terre.jpg" >
+                    <img src="../images/humaaans-sitting-3.png" alt="Cinque Terre" width="125" height="160"/>
+                </a>
+            </li>
+            <li className="flex-image-item">
+                <a target="_blank" href="img_5terre.jpg">
+                    <img src="../images/humaaans-sitting-3.png" alt="Cinque Terre" width="125" height="160"/>
+                </a>
+            </li>
+            <li className="flex-image-item">
+                <a target="_blank" href="img_5terre.jpg">
+                    <img src="../images/humaaans-sitting-3.png" alt="Cinque Terre" width="125" height="160"/>
+                </a>
+            </li>
+            <li className="flex-image-item">
+                <a target="_blank" href="img_5terre.jpg">
+                    <img src="../images/humaaans-sitting-3.png" alt="Cinque Terre" width="125" height="160"/>
+                </a>
+            </li>
+            <li className="flex-image-item">
+                <a target="_blank" href="img_5terre.jpg">
+                    <img src="../images/humaaans-sitting-3.png" alt="Cinque Terre" width="125" height="160"/>
+                </a>
+            </li>
+            <li className="flex-image-item">
+                <a target="_blank" href="img_5terre.jpg">
+                    <img src="../images/humaaans-sitting-3.png" alt="Cinque Terre" width="125" height="160"/>
+                </a>
+            </li>
+           
+           
+        </ul>  
+          
+    </div>
+    
+}
+
+
 
 class HelloForm extends React.Component {
     
@@ -16,6 +61,7 @@ class HelloForm extends React.Component {
             this.setState({ name: e.target.value })
         }
         this.onDoneClick = (e) => {
+            console.log('onDonClick!!!!!!!!!');
             this.props.dialog.close();
         }
     }
@@ -23,19 +69,10 @@ class HelloForm extends React.Component {
     render() {
         let index = this.state.selected
         return (
-            <form style={{ width: 500 }}>
-                <h1>Man illustrations </h1>
-                {/* <label className="row">
-                    <span>
-                        Tab Control Variant
-                    </span>
-                    <select onChange={e => { this.setState({ type: e.target.value })}}>
-                        <option value="">Normal</option>
-                        <option value="quiet">Quiet</option>
-                        <option value="quiet small">Quiet Small</option>
-                    </select>
-                </label> */}
-                <div>
+            <form style={{ width: 802, height:400 }}>
+                <h1>Man illustrations by Peter </h1>
+                
+                <div style={{ marginTop:20 }}>
                     <TabList
                         quiet={this.state.type.includes("quiet")}
                         small={this.state.type.includes("small")}
