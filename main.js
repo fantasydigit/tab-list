@@ -249,7 +249,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, ".category-view{\r\n    overflow-y: scroll;\r\n    height: 250px;\r\n}\r\n\r\n.flex-container {\r\n    padding: 0;\r\n    margin: 0;\r\n    list-style: none;\r\n    border: 1px solid silver;\r\n    -ms-box-orient: horizontal;\r\n    display: -webkit-box;\r\n    display: -moz-box;\r\n    display: -ms-flexbox;\r\n    display: -moz-flex;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    \r\n  }\r\n  .wrap    { \r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n  } \r\n\r\n  .flex-item {\r\n    background: tomato;\r\n    padding: 5px;\r\n    width: 100px;\r\n    height: 100px;\r\n    margin: 10px;\r\n    \r\n    line-height: 100px;\r\n    color: white;\r\n    font-weight: bold;\r\n    font-size: 2em;\r\n    text-align: center;\r\n  }\r\n\r\n  .flex-image-item {\r\n    padding: 1px;\r\n    width: 200px;\r\n    height: 200px;\r\n    margin-top: 0px;\r\n    margin-bottom: 0px;\r\n    border: 1px solid #ccc;\r\n    border-left-style:none;\r\n    border-top-style:none;\r\n    \r\n    text-align: center;\r\n  }\r\n  .flex-image-item>img{\r\n      margin: 20px;\r\n      \r\n  }\r\n", ""]);
+exports.push([module.i, ".category-view{\r\n    overflow-y: scroll;\r\n    height: 250px;\r\n}\r\n\r\n.flex-container {\r\n    padding: 0;\r\n    margin: 0;\r\n    list-style: none;\r\n    border: 1px solid silver;\r\n    -ms-box-orient: horizontal;\r\n    display: -webkit-box;\r\n    display: -moz-box;\r\n    display: -ms-flexbox;\r\n    display: -moz-flex;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    \r\n  }\r\n  .wrap    { \r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n  } \r\n\r\n  .flex-item {\r\n    background: tomato;\r\n    padding: 5px;\r\n    width: 100px;\r\n    height: 100px;\r\n    margin: 10px;\r\n    \r\n    line-height: 100px;\r\n    color: white;\r\n    font-weight: bold;\r\n    font-size: 2em;\r\n    text-align: center;\r\n  }\r\n\r\n  .flex-image-item {\r\n    padding: 1px;\r\n    width: 200px;\r\n    height: 200px;\r\n    margin-top: 0px;\r\n    margin-bottom: 0px;\r\n    border: 1px solid #ccc;\r\n    border-left-style:none;\r\n    border-top-style:none;\r\n    \r\n    text-align: center;\r\n  }\r\n  .flex-image-item>img{\r\n      margin: 30px;\r\n      \r\n  }\r\n", ""]);
 
 // exports
 
@@ -29378,9 +29378,30 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 const style = __webpack_require__(/*! ./styles.css */ "./src/styles.css");
 
-function clickMe(e) {
-    console.log(e.currentTarget.getAttribute('data-illustration-path'));
+const fs = __webpack_require__(/*! uxp */ "uxp").storage.localFileSystem;
+const application = __webpack_require__(/*! application */ "application");
+const clipboard = __webpack_require__(/*! clipboard */ "clipboard");
+const commands = __webpack_require__(/*! commands */ "commands");
+
+async function copySvgCode(text) {
+    clipboard.copyText(text);
 }
+
+function clickMe(e) {
+    var path = e.currentTarget.getAttribute('data-illustration-path');
+
+    var request = new XMLHttpRequest();
+    request.open("GET", path);
+    request.setRequestHeader("Content-Type", "image/svg+xml");
+    request.addEventListener("load", function (event) {
+        var response = event.target.responseText;
+        copySvgCode(response);
+        //copyToClipboard(response);
+
+    });
+    request.send();
+}
+
 function SampleTabContent(text) {
 
     return React.createElement(
@@ -29391,59 +29412,38 @@ function SampleTabContent(text) {
             { className: "flex-container wrap" },
             React.createElement(
                 "li",
-                { className: "flex-image-item", id: "image-item1", "data-illustration-path": "../images/humaaans-sitting-3.png", onClick: e => {
+                { className: "flex-image-item", id: "image-item1", "data-illustration-path": "../images/Group 164.svg", onClick: e => {
                         clickMe(e);
                     } },
-                React.createElement(
-                    "a",
-                    { target: "_blank", href: "img_5terre.jpg" },
-                    React.createElement("img", { src: "../images/humaaans-sitting-3.png", alt: "Cinque Terre", width: "125", height: "160" })
-                )
+                React.createElement("img", { src: "../images/Group 164.svg", alt: "Cinque Terre", width: "125", height: "160" })
             ),
             React.createElement(
                 "li",
-                { className: "flex-image-item" },
-                React.createElement(
-                    "a",
-                    { target: "_blank", href: "img_5terre.jpg" },
-                    React.createElement("img", { src: "../images/humaaans-sitting-3.png", alt: "Cinque Terre", width: "125", height: "160" })
-                )
+                { className: "flex-image-item", id: "image-item1", "data-illustration-path": "../images/Group 204.svg", onClick: e => {
+                        clickMe(e);
+                    } },
+                React.createElement("img", { src: "../images/Group 204.svg", alt: "Cinque Terre", width: "125", height: "160" })
             ),
             React.createElement(
                 "li",
-                { className: "flex-image-item" },
-                React.createElement(
-                    "a",
-                    { target: "_blank", href: "img_5terre.jpg" },
-                    React.createElement("img", { src: "../images/humaaans-sitting-3.png", alt: "Cinque Terre", width: "125", height: "160" })
-                )
+                { className: "flex-image-item", id: "image-item1", "data-illustration-path": "../images/Group 129.svg", onClick: e => {
+                        clickMe(e);
+                    } },
+                React.createElement("img", { src: "../images/Group 129.svg", alt: "Cinque Terre", width: "125", height: "160" })
             ),
             React.createElement(
                 "li",
-                { className: "flex-image-item" },
-                React.createElement(
-                    "a",
-                    { target: "_blank", href: "img_5terre.jpg" },
-                    React.createElement("img", { src: "../images/humaaans-sitting-3.png", alt: "Cinque Terre", width: "125", height: "160" })
-                )
+                { className: "flex-image-item", id: "image-item1", "data-illustration-path": "../images/Group 98.svg", onClick: e => {
+                        clickMe(e);
+                    } },
+                React.createElement("img", { src: "../images/Group 98.svg", alt: "Cinque Terre", width: "125", height: "160" })
             ),
             React.createElement(
                 "li",
-                { className: "flex-image-item" },
-                React.createElement(
-                    "a",
-                    { target: "_blank", href: "img_5terre.jpg" },
-                    React.createElement("img", { src: "../images/humaaans-sitting-3.png", alt: "Cinque Terre", width: "125", height: "160" })
-                )
-            ),
-            React.createElement(
-                "li",
-                { className: "flex-image-item" },
-                React.createElement(
-                    "a",
-                    { target: "_blank", href: "img_5terre.jpg" },
-                    React.createElement("img", { src: "../images/humaaans-sitting-3.png", alt: "Cinque Terre", width: "125", height: "160" })
-                )
+                { className: "flex-image-item", id: "image-item1", "data-illustration-path": "../images/Group 45.svg", onClick: e => {
+                        clickMe(e);
+                    } },
+                React.createElement("img", { src: "../images/Group 45.svg", alt: "Cinque Terre", width: "125", height: "160" })
             )
         )
     );
@@ -29458,7 +29458,6 @@ class HelloForm extends React.Component {
             this.setState({ name: e.target.value });
         };
         this.onDoneClick = e => {
-            console.log('onDonClick!!!!!!!!!');
             this.props.dialog.close();
         };
     }
@@ -29467,7 +29466,7 @@ class HelloForm extends React.Component {
         let index = this.state.selected;
         return React.createElement(
             "form",
-            { style: { width: 802, height: 400 } },
+            { id: "main-form", style: { width: 802, height: 400 } },
             React.createElement(
                 "h1",
                 null,
@@ -29480,9 +29479,9 @@ class HelloForm extends React.Component {
                     quiet: this.state.type.includes("quiet"),
                     small: this.state.type.includes("small"),
                     tabs: {
-                        "1": { label: "Category 1", view: SampleTabContent.bind(null, "One Content") },
-                        "2": { label: "Category 2", view: SampleTabContent.bind(null, "Two Content") },
-                        "3": { label: "Category 3", view: SampleTabContent.bind(null, "Three Content") }
+                        "1": { label: "Category 1", view: SampleTabContent.bind(null, "One Content") }
+                        // "2": { label: "Category 2", view: SampleTabContent.bind(null, "Two Content") },
+                        // "3": { label: "Category 3", view: SampleTabContent.bind(null, "Three Content") },
                         // "4": { label: "Section Disabled", disabled: true }
                     }
                 })
@@ -29492,7 +29491,7 @@ class HelloForm extends React.Component {
                 null,
                 React.createElement(
                     "button",
-                    { type: "submit", "uxp-variant": "cta", onClick: this.onDoneClick },
+                    { id: "closeButton", "uxp-variant": "cta" },
                     "Done"
                 )
             )
@@ -29512,8 +29511,24 @@ function getDialog() {
 module.exports = {
     commands: {
         menuCommand: function () {
-            document.body.appendChild(getDialog()).showModal();
+            return new Promise((resolve, reject) => {
+                let aDialog = document.body.appendChild(getDialog());
+                aDialog.showModal();
+                let closeButton = document.getElementById("closeButton");
+                console.log(closeButton);
+                closeButton.onclick = function () {
+                    console.log("CCCCCCCCCCClicked~!!!");
+                    aDialog.close();
+                    resolve();
+                };
+            });
         }
+
+        // menuCommand: async (selection, documentRoot) => {
+        //     await getDialog(selection, documentRoot).showModal(); // async await very important
+        // }
+
+        //menuCommand: copySvgCode
     }
 };
 
@@ -29546,6 +29561,50 @@ var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
+
+/***/ }),
+
+/***/ "application":
+/*!******************************!*\
+  !*** external "application" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("application");
+
+/***/ }),
+
+/***/ "clipboard":
+/*!****************************!*\
+  !*** external "clipboard" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("clipboard");
+
+/***/ }),
+
+/***/ "commands":
+/*!***************************!*\
+  !*** external "commands" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("commands");
+
+/***/ }),
+
+/***/ "uxp":
+/*!**********************!*\
+  !*** external "uxp" ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("uxp");
 
 /***/ })
 

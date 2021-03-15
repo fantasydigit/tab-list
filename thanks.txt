@@ -1,0 +1,26 @@
+****** Promise????????
+
+function showDialog(dialogId, messageText) {
+  return new Promise((resolve, reject) => {
+    let dialog = document.querySelector(dialogId);
+    let message = document.querySelector(dialogId + " #message");
+    let closeButton = document.querySelector(dialogId + " #closeButton");
+    dialog.showModal();
+    message.textContent = messageText;
+    closeButton.onclick = () => {
+      dialog.close();
+      resolve();
+    }
+  });
+}
+
+
+********* AdobeXD plugin ui tab react ;)
+ https://github.com/AdobeXD/plugin-samples/tree/master/ui-tabs-react
+
+******** AdobeXD plugin copy svg selection to clipboard
+
+
+
+
+

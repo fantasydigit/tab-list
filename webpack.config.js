@@ -6,6 +6,13 @@ module.exports = {
         libraryTarget: "commonjs2"
     },
     devtool: "none", // prevent webpack from using eval() on my module
+    externals: {
+        uxp: 'uxp',
+        application: 'application',
+        clipboard: 'clipboard',
+        commands: 'commands'
+    },
+    
     module: {
         rules: [
             {
@@ -24,4 +31,5 @@ module.exports = {
             }
         ]
     }
+    
 };
