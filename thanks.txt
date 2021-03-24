@@ -22,5 +22,14 @@ function showDialog(dialogId, messageText) {
 
 
 
+************ list file in directory
+https://stackoverflow.com/questions/46962000/list-directory-in-react
+
+
+*********** load json from url
+https://stackoverflow.com/questions/39019094/reactjs-get-json-object-data-from-an-url
+
+
+
 
 
