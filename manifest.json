@@ -1,6 +1,6 @@
 {
   "id": "b12a3513",
-  "name": "Man Illustration",
+  "name": "Illustration Puzzle",
   "version": "0.0.1",
   "host": {
       "app": "XD",
@@ -21,7 +21,7 @@
   "uiEntryPoints": [
       {
           "type": "menu",
-          "label": "Man~ ;)",
+          "label": "Puzzles",
           "commandId": "menuCommand"
       }
   ]

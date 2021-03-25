@@ -35,7 +35,10 @@
     "axios": "^0.21.1",
     "min-jquery": "^1.7.0",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-alert": "^7.0.2",
+    "react-alert-template-basic": "^1.0.0",
+    "react-dom": "^16.5.2",
+    "react-modal": "^3.12.1"
   },
   "prettier": {
     "semi": false,

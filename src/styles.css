@@ -43,12 +43,45 @@
     margin-top: 0px;
     margin-bottom: 0px;
     border: 1px solid #ccc;
-    border-left-style:none;
-    border-top-style:none;
+    /* border-left-style:none;
+    border-top-style:none; */
     
     text-align: center;
+    cursor: pointer;
   }
   .flex-image-item>img{
       margin: 30px;
       
+  }
+
+  .flex-image-item:hover{
+    border-color: blue;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: transparent;
+    color: blue;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 86%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 0.3;
   }
