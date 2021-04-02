@@ -44,7 +44,8 @@ module.exports = class MainForm extends React.Component {
     
     componentDidMount() {
         console.log("componetDidMout.....>>>>>>>>>>>>>>>>>>")
-        fetch("http://178.20.43.186/PeterDesign/data.json")
+        fetch("https://raw.githubusercontent.com/Polaris00418/tab-list/main/PeterDesign/data.json")
+
             .then(response => response.json())
             .then((jsonData) => {
                 // jsonData is parsed json object received from url
